@@ -7,7 +7,7 @@ import styles from '../styles';
 import { fadeIn, staggerContainer } from '../utils/motion';
 
 const About = () => (
-  <section className={`${styles.paddings} relative z-10`}>
+  <section id="about" className={`${styles.paddings} relative z-10`}>
     <div className="gradient-02 z-0" />
     <motion.div
       variants={staggerContainer}
@@ -16,25 +16,19 @@ const About = () => (
       viewport={{ once: false, amount: 0.25 }}
       className={`${styles.innerWidth} mx-auto ${styles.flexCenter} flex-col`}
     >
-      <TypingText title="| About Metaversus" textStyles="text-center" />
-
+    <div className="flex items-center gap-4">
+      <img src="/mklogo.jpg" alt="logo" className="w-[80px] h-[60px] object-contain" />
+      <TypingText title={"| \u00A0 About LabelMK"} textStyles="text-center" />
+    </div>  
       <motion.p
         variants={fadeIn('up', 'tween', 0.2, 1)}
-        className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
+        className="mt-[8px] sm:text-[24px] text-[12px] text-center text-secondary-white"
       >
-        <span className="font-extrabold text-white">Metaverse</span> is a new
-        thing in the future, where you can enjoy the virtual world by feeling
-        like it's really real, you can feel what you feel in this metaverse
-        world, because this is really the{' '}
-        <span className="font-extrabold text-white">
-          madness of the metaverse
+        <span className="font-bold text-white">Label Monira Khatoon</span> is a fashion brand that is dedicated to providing all types of custom stitching (western, eastern, indo-western), fashion design, production work, uniforms, wedding and party boutique manufacturing in B2B. We also deal with dyes, alteration and embroidery services with high level intricate detailings and shipping to Clients all over India. Our team of experienced designers and tailors work tirelessly to create unique and stylish designs that are tailored to the individual needs of our clients. We believe that fashion is a form of self-expression, and we strive to help our customers express themselves through their clothing choices. Our goal is to create a brand that is synonymous with quality, style, and innovation in the{' '}
+        <span className="font-bold text-white">
+          fashion
         </span>{' '}
-        of today, using only{' '}
-        <span className="font-extrabold text-white">VR</span> devices you can
-        easily explore the metaverse world you want, turn your dreams into
-        reality. Let's{' '}
-        <span className="font-extrabold text-white">explore</span> the madness
-        of the metaverse by scrolling down
+        industry. Let's explore us by scrolling down
       </motion.p>
 
       <motion.img
