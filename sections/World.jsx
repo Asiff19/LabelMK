@@ -11,7 +11,7 @@ const World = () => (
   <section className={`${styles.paddings} relative z-10`}>
     <motion.div
       variants={staggerContainer}
-      initial="hidden"
+      initial={false}
       animate="show"
       className={`${styles.innerWidth} mx-auto flex flex-col`}
     >

@@ -10,7 +10,7 @@ const Hero = () => (
   <section className={`${styles.yPaddings} sm:pl-16 pl-6 pt-[180px]`}>
     <motion.div
       variants={staggerContainer}
-      initial="hidden"
+      initial={false}
       animate="show"
       className={`${styles.innerWidth} mx-auto flex flex-col`}
     >

@@ -15,7 +15,7 @@ const Explore = () => {
     <section className={`${styles.paddings}`} id="explore">
       <motion.div
         variants={staggerContainer}
-        initial="hidden"
+        initial={false}
         animate="show"
         className={`${styles.innerWidth} mx-auto flex flex-col`}
       >

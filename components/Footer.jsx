@@ -9,7 +9,7 @@ import { footerVariants } from '../utils/motion';
 const Footer = () => (
   <motion.footer
     variants={footerVariants}
-    initial="hidden"
+    initial={false}
     animate="show"
     className={`${styles.xPaddings} py-8 relative`}
   >

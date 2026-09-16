@@ -45,7 +45,7 @@ const Navbar = () => {
     <>
       <motion.nav
         variants={navVariants}
-        initial="hidden"
+        initial={false}
         animate={showNav ? 'show' : 'hidden'}
         className={`${styles.xPaddings} py-8 fixed left-0 right-0 top-0 z-50`}
       >

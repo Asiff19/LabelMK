@@ -27,7 +27,7 @@ const GetStarted = () => (
   <section id="contact" className={`${styles.paddings} relative z-10`}>
     <motion.div
       variants={staggerContainer}
-      initial="hidden"
+      initial={false}
       animate="show"
       className={`${styles.innerWidth} mx-auto flex lg:flex-row flex-col gap-8 items-center`}
     >
