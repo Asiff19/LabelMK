@@ -105,3 +105,19 @@
   background: #65c4fa;
   filter: blur(150px);
 }
+
+@media (max-width: 640px) {
+  .gradient-01,
+  .gradient-02,
+  .gradient-03,
+  .gradient-04,
+  .feedback-gradient,
+  .footer-gradient {
+    filter: none;
+  }
+
+  .glassmorphism {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
