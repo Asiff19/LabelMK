@@ -12,8 +12,7 @@ const World = () => (
     <motion.div
       variants={staggerContainer}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, amount: 0.25 }}
+      animate="show"
       className={`${styles.innerWidth} mx-auto flex flex-col`}
     >
 
