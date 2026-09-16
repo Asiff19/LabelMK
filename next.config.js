@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
-const basePath = isGitHubPages ? '/labelmk_portfolio' : '';
+const basePath = isGitHubPages ? '/LabelMK' : '';
 
 const nextConfig = {
   output: 'export',

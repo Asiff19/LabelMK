@@ -5,6 +5,7 @@ import { TypingText } from '../components';
 
 import styles from '../styles';
 import { fadeIn, staggerContainer } from '../utils/motion';
+import { assetPath } from '../utils/assets';
 
 const About = () => (
   <section id="about" className={`${styles.paddings} relative z-10`}>
@@ -17,7 +18,7 @@ const About = () => (
       className={`${styles.innerWidth} mx-auto ${styles.flexCenter} flex-col`}
     >
     <div className="flex items-center gap-4">
-      <img src="/mklogo.jpg" alt="logo" className="w-[80px] h-[60px] object-contain" />
+      <img src={assetPath('/mklogo.jpg')} alt="logo" className="w-[80px] h-[60px] object-contain" />
       <TypingText title={"| \u00A0 About LabelMK"} textStyles="text-center" />
     </div>  
       <motion.p
@@ -33,7 +34,7 @@ const About = () => (
 
       <motion.img
         variants={fadeIn('up', 'tween', 0.3, 1)}
-        src="/arrow-down.svg"
+        src={assetPath('/arrow-down.svg')}
         alt="arrow down"
         className="w-[18px] h-[28px] object-contain mt-[28px]"
       />

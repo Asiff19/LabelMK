@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import styles from '../styles';
 import { navVariants } from '../utils/motion';
+import { assetPath } from '../utils/assets';
 
 const navItems = [
   { label: 'About Us', href: '#about' },
@@ -60,7 +61,7 @@ const Navbar = () => {
             aria-label="Open menu"
             className="flex h-10 w-10 items-center justify-center rounded-full transition hover:opacity-80"
           >
-            <img src="/menu.svg" alt="menu" className="h-[24px] w-[24px] object-contain" />
+            <img src={assetPath('/menu.svg')} alt="menu" className="h-[24px] w-[24px] object-contain" />
           </button>
         </div>
       </motion.nav>
