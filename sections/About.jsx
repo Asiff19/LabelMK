@@ -12,8 +12,9 @@ const About = () => (
     <div className="gradient-02 z-0" />
     <motion.div
       variants={staggerContainer}
-      initial={false}
-      animate="show"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15 }}
       className={`${styles.innerWidth} mx-auto ${styles.flexCenter} flex-col`}
     >
     <div className="flex items-center gap-4">

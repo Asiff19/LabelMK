@@ -51,8 +51,9 @@ const Navbar = () => {
       >
         <div className="absolute inset-0 gradient-01" />
         <div className={`${styles.innerWidth} relative mx-auto flex items-center justify-between gap-8`}>
+          <img src={assetPath('/mklogo.jpg')} alt="logo" className="w-[80px] h-[60px] object-contain" />
           <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white">
-            Label<span className="text-[#915EFF]">MK</span>
+            LabelMK
           </h2>
 
           <button

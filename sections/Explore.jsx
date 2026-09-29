@@ -15,8 +15,9 @@ const Explore = () => {
     <section className={`${styles.paddings}`} id="explore">
       <motion.div
         variants={staggerContainer}
-        initial={false}
-        animate="show"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
         className={`${styles.innerWidth} mx-auto flex flex-col`}
       >
         <TypingText title="| The LabelMK World" textStyles="text-center" />
