@@ -17,6 +17,8 @@ NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key
 
 For GitHub Pages deployments, add a repository Actions secret named `WEB3FORMS_ACCESS_KEY`. The deploy workflow injects it during the static build.
 
+For Vercel, add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` to the project's Environment Variables in **Settings**, with the Web3Forms access key and the **Production** environment selected (also select Preview/Development if needed). Redeploy after changing it because the value is embedded during the build. Confirm the latest deployment is from the `main` branch.
+
 ## Deploy to Hostinger
 
 This project is exported as a static site, so it can run on Hostinger web hosting without a Node.js server. Buying a domain alone does not include website hosting.

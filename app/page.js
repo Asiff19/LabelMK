@@ -1,11 +1,16 @@
 import { Footer, Navbar } from '../components';
 import { About, Explore, GetStarted, Hero, World } from '../sections';
 import SplashGate from '../components/SplashGate';
+import { assetPath } from '../utils/assets';
 
 const Page = () => (
   <SplashGate>
     <>
-      <div className="landing-background" aria-hidden="true" />
+      <div
+        className="landing-background"
+        style={{ '--landing-background-image': `url("${assetPath('/landing-bg.jpg')}")` }}
+        aria-hidden="true"
+      />
       <div className="landing-content relative z-10">
         <Navbar />
         <Hero />

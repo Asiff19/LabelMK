@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { assetPath } from '../utils/assets';
 
 const SplashGate = ({ children }) => {
   const [showSplash, setShowSplash] = useState(true);
@@ -35,6 +36,7 @@ const SplashGate = ({ children }) => {
           <motion.div
             key="label-mk-splash"
             className="splash-screen"
+            style={{ '--splash-background-image': `url("${assetPath('/splash-bg.jpeg')}")` }}
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
