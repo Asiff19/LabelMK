@@ -14,7 +14,7 @@ const About = () => (
       variants={staggerContainer}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: false, amount: 0.15 }}
       className={`${styles.innerWidth} mx-auto ${styles.flexCenter} flex-col`}
     >
     <div className="flex items-center gap-4">

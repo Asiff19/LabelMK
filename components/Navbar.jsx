@@ -99,13 +99,13 @@ const Navbar = () => {
                 </button>
               </div>
 
-              <nav className="flex flex-col gap-4">
+              <nav className="-mx-6 flex flex-col gap-4">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-base font-medium text-white transition hover:bg-white/10"
+                    className="flex w-full items-center border border-white/10 bg-white/5 px-6 py-3 text-base font-medium text-white transition hover:bg-white/10"
                   >
                     {item.label}
                   </a>

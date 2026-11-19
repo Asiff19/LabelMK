@@ -17,7 +17,7 @@ const Explore = () => {
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: false, amount: 0.15 }}
         className={`${styles.innerWidth} mx-auto flex flex-col`}
       >
         <TypingText title="| The LabelMK World" textStyles="text-center" />

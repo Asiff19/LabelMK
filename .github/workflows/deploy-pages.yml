@@ -32,6 +32,8 @@ jobs:
 
       - name: Build static site
         run: npm run export
+        env:
+          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
 
       - name: Add GitHub Pages marker
         run: touch out/.nojekyll

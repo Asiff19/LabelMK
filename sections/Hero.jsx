@@ -10,8 +10,9 @@ const Hero = () => (
   <section className={`${styles.yPaddings} sm:pl-16 pl-6 pt-[180px]`}>
     <motion.div
       variants={staggerContainer}
-      initial={"hidden"}
-      animate="show"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.15 }}
       className={`${styles.innerWidth} mx-auto flex flex-col`}
     >
       <div className="flex justify-center items-center py-14 flex-col relative z-10">

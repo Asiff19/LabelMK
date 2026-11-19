@@ -10,6 +10,74 @@
   scroll-behavior: smooth;
 }
 
+.landing-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #1a232e;
+  background-image:
+    linear-gradient(rgba(26, 35, 46, 0.84), rgba(26, 35, 46, 0.88)),
+    url('/landing-bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.landing-content {
+  overflow: clip;
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background-color: #15120f;
+  background-image:
+    linear-gradient(180deg, rgba(14, 12, 10, 0.32), rgba(14, 12, 10, 0.68)),
+    url('/splash-bg.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+
+.splash-content {
+  width: min(72vw, 320px);
+  color: #fffaf2;
+  text-align: center;
+}
+
+.splash-title {
+  margin-bottom: 6px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.splash-subtitle {
+  display: block;
+  margin-bottom: 28px;
+  color: rgba(255, 250, 242, 0.72);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.splash-progress {
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 250, 242, 0.36);
+}
+
+.splash-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fffaf2;
+  transform-origin: left center;
+}
+
 .gradient-01 {
   background-image: linear-gradient(
     270deg,

@@ -1,35 +1,78 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 import styles from '../styles';
 import { TitleText, TypingText } from '../components';
 import { staggerContainer, fadeIn } from '../utils/motion';
 
-const handleSubmit = (event) => {
-  event.preventDefault();
+const GetStarted = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
-  const formData = new FormData(event.currentTarget);
-  const whatsapp = formData.get('whatsapp')?.toString().trim() || '';
-  const email = formData.get('email')?.toString().trim() || '';
-  const designRequirement = formData.get('designRequirement')?.toString().trim() || '';
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const subject = encodeURIComponent('New design request');
-  const body = encodeURIComponent(
-    `WhatsApp Number: ${whatsapp}\nEmail: ${email}\nDesign Requirement: ${designRequirement}`,
-  );
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-  window.location.href = `mailto:ishikakhatoon890@gmail.com?subject=${subject}&body=${body}`;
-  event.currentTarget.reset();
-};
+    if (!accessKey) {
+      setSubmissionStatus({
+        type: 'error',
+        message: 'Order submission is not configured yet. Please contact us directly.',
+      });
+      return;
+    }
 
-const GetStarted = () => (
-  <section id="contact" className={`${styles.paddings} relative z-10`}>
+    setIsSubmitting(true);
+    setSubmissionStatus(null);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: 'New design request',
+          from_name: 'Label MK website',
+          whatsapp: formData.get('whatsapp')?.toString().trim() || '',
+          email: formData.get('email')?.toString().trim() || '',
+          message: formData.get('designRequirement')?.toString().trim() || '',
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error('The request could not be submitted. Please try again.');
+      }
+
+      form.reset();
+      setSubmissionStatus({
+        type: 'success',
+        message: 'Your request has been sent. We will get back to you soon.',
+      });
+    } catch (error) {
+      setSubmissionStatus({
+        type: 'error',
+        message: error.message || 'Something went wrong. Please try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <section id="contact" className={`${styles.paddings} relative z-10`}>
     <motion.div
       variants={staggerContainer}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: false, amount: 0.15 }}
       className={`${styles.innerWidth} mx-auto flex lg:flex-row flex-col gap-8 items-center`}
     >
       <motion.div
@@ -98,14 +141,24 @@ const GetStarted = () => (
 
           <button
             type="submit"
-            className="mt-2 rounded-2xl bg-[#f4d35e] px-6 py-3 text-base font-semibold text-[#111827] transition hover:bg-[#f7df8a]"
+            disabled={isSubmitting}
+            className="mt-2 rounded-2xl bg-[#f4d35e] px-6 py-3 text-base font-semibold text-[#111827] transition hover:bg-[#f7df8a] disabled:cursor-wait disabled:opacity-60"
           >
-            Submit Request
+            {isSubmitting ? 'Sending...' : 'Submit Request'}
           </button>
+          {submissionStatus && (
+            <p
+              role={submissionStatus.type === 'error' ? 'alert' : 'status'}
+              className={submissionStatus.type === 'error' ? 'text-sm text-red-300' : 'text-sm text-emerald-300'}
+            >
+              {submissionStatus.message}
+            </p>
+          )}
         </form>
       </motion.div>
     </motion.div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default GetStarted;
