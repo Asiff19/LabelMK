@@ -33,7 +33,7 @@ jobs:
       - name: Build static site
         run: npm run export
         env:
-          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          NEXT_PUBLIC_GOOGLE_SHEETS_ENDPOINT: ${{ secrets.GOOGLE_SHEETS_ENDPOINT }}
 
       - name: Add GitHub Pages marker
         run: touch out/.nojekyll

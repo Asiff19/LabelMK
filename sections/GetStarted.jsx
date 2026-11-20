@@ -16,12 +16,12 @@ const GetStarted = () => {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    const endpoint = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ENDPOINT;
 
-    if (!accessKey) {
+    if (!endpoint) {
       setSubmissionStatus({
         type: 'error',
-        message: 'Order submission is not configured yet. Please contact us directly.',
+        message: 'Order submission is not connected yet. Please contact us directly.',
       });
       return;
     }
@@ -30,36 +30,28 @@ const GetStarted = () => {
     setSubmissionStatus(null);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: 'New design request',
-          from_name: 'Label MK website',
-          whatsapp: formData.get('whatsapp')?.toString().trim() || '',
-          email: formData.get('email')?.toString().trim() || '',
-          message: formData.get('designRequirement')?.toString().trim() || '',
-        }),
+      const payload = new URLSearchParams({
+        whatsapp: formData.get('whatsapp')?.toString().trim() || '',
+        email: formData.get('email')?.toString().trim() || '',
+        designRequirement: formData.get('designRequirement')?.toString().trim() || '',
+        website: formData.get('website')?.toString().trim() || '',
       });
-      const result = await response.json();
 
-      if (!response.ok || !result.success) {
-        throw new Error('The request could not be submitted. Please try again.');
-      }
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: payload,
+      });
 
       form.reset();
       setSubmissionStatus({
         type: 'success',
-        message: 'Your request has been sent. We will get back to you soon.',
+        message: 'Your request was sent. We will get back to you soon.',
       });
-    } catch (error) {
+    } catch {
       setSubmissionStatus({
         type: 'error',
-        message: error.message || 'Something went wrong. Please try again.',
+        message: 'Your request could not be sent. Please try again or contact us directly.',
       });
     } finally {
       setIsSubmitting(false);
@@ -97,6 +89,11 @@ const GetStarted = () => {
         <TitleText title={<>Submit your order & we'll get back</>} />
 
         <form onSubmit={handleSubmit} className="mt-[31px] flex w-full max-w-[420px] flex-col gap-5">
+          <div className="absolute -left-[10000px]" aria-hidden="true">
+            <label htmlFor="website">Leave this field empty</label>
+            <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
+
           <div className="flex flex-col gap-2">
             <label htmlFor="whatsapp" className="text-sm font-medium text-white/80">
               WhatsApp Number
